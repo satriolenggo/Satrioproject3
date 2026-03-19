@@ -1,13 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask
 
-app = Flask(__name__)
-app = app  # <--- TAMBAHKAN BARIS INI
+app = Flask(__name__, 
+            template_folder='path_to_your_templates',  # Change to your templates directory
+            static_folder='path_to_your_static')       # Change to your static files directory
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# Your existing route definitions and app logic...
 
 if __name__ == '__main__':
-    # Bagian ini hanya jalan di laptopmu (PyCharm), Vercel akan mengabaikannya
-    print("--- LEON SANDBOX RUNNING ---")
-    app.run(debug=True, port=5000)
+    app.run()
